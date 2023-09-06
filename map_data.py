@@ -126,3 +126,8 @@ def get_creative_map():
         print(f"{level_name} - {codes}")
         time.sleep(2)
 
+
+username = os.environ.get("NAME")
+password = os.environ.get("PASSWORD")
+
+authenticate_me(username, password)

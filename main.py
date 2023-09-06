@@ -1,6 +1,10 @@
 import discord
+import os
 from map_data import add_new_info, authenticate_me, get_my_info, get_creative_map
 from discord.ext import commands
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 intents = discord.Intents.all()
 intents.message_content = True
@@ -38,7 +42,7 @@ async def login(ctx):
 async def creative(ctx):
     get_creative_map()
 
-token = "MTE0NDEwNzczNDAzMjE4NzQxMg.Gf8azT.s7xL3BEpt0FP1frv-CZ2psQlo4STUFFDPi_fiY"
+token = os.environ.get("TOKEN")
 
 # @bot.event
 # async def on_message(message):
