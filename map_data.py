@@ -1,4 +1,5 @@
 import time
+import re
 import os
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
@@ -123,7 +124,12 @@ def get_creative_map():
         map_posts = driver.find_element(By.XPATH, DESC_XPATH)
         codes = map_posts.text.splitlines()[7]
         level_name = map_posts.text.splitlines()[4]
+        level_code_pattern = r"\d{4}-\d{4}-\d{4}"
+        level_code = re.search(level_code_pattern, map_posts.text)
+        if level_code:
+            print("Found ", level_code.group())
         print(f"{level_name} - {codes}")
+
         time.sleep(2)
 
 
